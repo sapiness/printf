@@ -30,16 +30,16 @@ int _printf(const char *format, ...)
 			{
 				char *str = va_arg(args, char *);
 
-				write(1, str, strlen(str));
+				write(1, format[i], strlen(str));
 			}
 			else if (format[i] == '%')
 			{
-				write(1, str, strlen(str));
+				write(1, format[i], strlen(str));
 			}
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			write(1, format[i], 1);
 		}
 	}
 
