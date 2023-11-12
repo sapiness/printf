@@ -1,50 +1,48 @@
 #include "main.h"
-
-/**
-  * _printf - entry point
-  * @format: JJ
-  * Return: LL
-  */
+#include <stdarg.h>
+#include <unistd.h>
+#include <string.h>
 
 int _printf(const char *format, ...)
 {
-	unsigned int i;
-	va_list args;
+    va_list args;
+    va_start(args, format);
 
-	va_start(args, format);
+    if (format == NULL)
+        return -1;
 
-	if (format == NULL)
-		return (-1);
+    int count = 0;
 
-	for (i = 0; format[i] != '\0'; i++)
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			if (format[i] == 'c')
-			{
-				char c = va_arg(args, int);
+    for (int i = 0; format[i] != '\0'; i++)
+    {
+        if (format[i] == '%')
+        {
+            i++;
+            if (format[i] == 'c')
+            {
+                char c = va_arg(args, int);
+                count += write(1, &c, 1);
+            }
+            else if (format[i] == 's')
+            {
+                char *str = va_arg(args, char *);
+                if (str != NULL)
+                    count += write(1, str, strlen(str));
+                else
+                    count += write(1, "(null)", 6);
+            }
+            else if (format[i] == '%')
+            {
+                count += write(1, "%", 1);
+            }
+        }
+        else
+        {
+            count += write(1, &format[i], 1);
+        }
+    }
 
-				write(1, &c, 1);
-			}
-			else if (format[i] == 's')
-			{
-				char *str = va_arg(args, char *);
+    va_end(args);
 
-				write(1, &str, strlen(str));
-			}
-			else if (format[i] == '%')
-			{
-				write(1, &str, strlen(str));
-			}
-		}
-		else
-		{
-			write(1, format[i], 1);
-		}
-	}
-
-	va_end(args);
-
-	return (0);
+    return count;
 }
