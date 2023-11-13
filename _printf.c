@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+	if (format[i] == '%')
 	{
 		i++;
 		if (format[i] == 'c')
@@ -37,7 +37,13 @@ int _printf(const char *format, ...)
 		{
 			str = va_arg(args, char *); /*Read the next argument as a string*/
 			len += _stringoutput(str);
-		} /*Add more cases for other format specifiers as needed*/
+		}
+		else if (format[i] == '%')
+			_putchar('%');
+			i += 2;
+			len++;
+
+		/*Add more cases for other format specifiers as needed*/
 	}
 	else
 	{
