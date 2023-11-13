@@ -3,11 +3,13 @@
 
 #include <unistd.h>
 #include <stdio.h>
-#include <limits.h>
 #include <stdarg.h>
-#include <stddef.h>
 #include <string.h>
 
+int _putchar(char c);
+void _print_s(char *str);
 int _printf(const char *format, ...);
+int _stringoutput(char *str);
+int _strlen(char *s);
 
 #endif
