@@ -2,9 +2,8 @@
 #define MAIN_H
 
 #include <unistd.h>
-#include <stdio.h>
+#include <stdlb.h>
 #include <stdarg.h>
-#include <string.h>
 
 int _putchar(char c);
 void _print_s(char *str);
