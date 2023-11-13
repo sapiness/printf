@@ -1,11 +1,9 @@
 #include "main.h"
-
 /**
   * _printf - prints string
   * @format: character passed
   * Return: string length
   */
-
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
@@ -13,14 +11,11 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
 	if (format == NULL)
 	{
 		va_end(args);
 		return (-1); /*You may want to choose a proper error code*/
 	}
-
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 	if (format[i] == '%')
@@ -39,11 +34,9 @@ int _printf(const char *format, ...)
 			len += _stringoutput(str);
 		}
 		else if (format[i] == '%')
+		{
 			_putchar('%');
-			i += 2;
-			len++;
-
-		/*Add more cases for other format specifiers as needed*/
+		}
 	}
 	else
 	{
@@ -51,7 +44,6 @@ int _printf(const char *format, ...)
 		len++;
 	}
 	}
-
 	va_end(args);
 	return (len);
 }
