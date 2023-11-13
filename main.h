@@ -2,7 +2,7 @@
 #define MAIN_H
 
 #include <unistd.h>
-#include <stdlb.h>
+#include <stdlib.h>
 #include <stdarg.h>
 
 int _putchar(char c);
