@@ -30,6 +30,11 @@ int _printf(const char *format, ...)
 				len += _stringoutput(va_arg(args, char *));
 			else if (format[i] == '%')
 				len += _putchar('%');
+			else
+			{
+				len += _putchar('%');
+				len += _putchar(format[i]);
+			}
 		}
 		else
 		{
