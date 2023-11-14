@@ -14,7 +14,6 @@ int _printf(const char *format, ...)
 
 	if (!format)
 	{
-		va_end(args);
 		return (-1);
 	}
 
