@@ -5,6 +5,7 @@
  * @format: format string
  * Return: number of characters printed (excluding null byte)
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -14,6 +15,7 @@ int _printf(const char *format, ...)
 
 	if (!format)
 	{
+		va_end(args);
 		return (-1);
 	}
 
