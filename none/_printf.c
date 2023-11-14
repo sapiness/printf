@@ -1,49 +1,42 @@
 #include "main.h"
+
 /**
-  * _printf - prints string
-  * @format: character passed
-  * Return: string length
-  */
+ * _printf - prints formatted string
+ * @format: format string
+ * Return: number of characters printed (excluding null byte)
+ */
 int _printf(const char *format, ...)
 {
-	int i, len = 0;
-	char *str;
 	va_list args;
+	int i, len = 0;
 
 	va_start(args, format);
-	if (format == NULL)
+
+	if (!format)
 	{
 		va_end(args);
-		return (-1); /*You may want to choose a proper error code*/
+		return (-1);
 	}
-	for (i = 0; format[i] != '\0'; i++)
-	{
-	if (format[i] == '%')
-	{
-		i++;
-		if (format[i] == 'c')
-		{
-			char c = va_arg(args, int); /*Read the next argument as a char*/
 
-			_putchar(c);
+	for (i = 0; format[i]; i++)
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == 'c')
+				len += _putchar(va_arg(args, int));
+			else if (format[i] == 's')
+				len += _stringoutput(va_arg(args, char *));
+			else if (format[i] == '%')
+				len += _putchar('%');
+		}
+		else
+		{
+			_putchar(format[i]);
 			len++;
 		}
-		else if (format[i] == 's')
-		{
-			str = va_arg(args, char *); /*Read the next argument as a string*/
-			len += _stringoutput(str);
-		}
-		else if (format[i] == '%')
-		{
-			_putchar('%');
-		}
 	}
-	else
-	{
-		write(1, &format[i], 1);
-		len++;
-	}
-	}
+
 	va_end(args);
 	return (len);
 }
