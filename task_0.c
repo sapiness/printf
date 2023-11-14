@@ -17,7 +17,7 @@ int _printf(const char *format, ...) {
       switch (format[i]) {
         case 'c': {
           char c = va_arg(args, int);
-          _putchar(c);
+          putchr(c);
           count++;
           break;
         }
@@ -25,19 +25,19 @@ int _printf(const char *format, ...) {
           char *str = va_arg(args, char *);
           if (str != NULL) {
             for (j = 0; str[j] != '\0'; j++) {
-              _putchar(str[j]);
+              putchr(str[j]);
               count++;
             }
           } else {
             for (j = 0; "(null)"[j] != '\0'; j++) {
-              _putchar("(null)"[j]);
+              putchr("(null)"[j]);
               count++;
             }
           }
           break;
         }
         case '%': {
-          _putchar('%');
+          putchr('%');
           count++;
           break;
         }
@@ -46,7 +46,7 @@ int _printf(const char *format, ...) {
         }
       }
     } else {
-      _putchar(format[i]);
+      putchr(format[i]);
       count++;
     }
   }
