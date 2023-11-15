@@ -55,14 +55,10 @@ int _printf(const char *format, ...)
  * @number: jjj
  * Return: hhhh
  */
-int _printf(int number)
+int _printf_numbers(int number)
 {
 	int copy, divider = 1, digitCount = 0;
 
-	if (number == INT_MIN)
-	{
-		_putchar('-');
-		number = -(number + 1);
 	}
 	else if (number < 0)
 	{
