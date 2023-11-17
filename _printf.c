@@ -8,7 +8,6 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i, len = 0;
-	char *str;
 
 	va_start(args, format);
 	if (!format || (format[0] == '%' && !format[1]))
@@ -23,13 +22,7 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 				len += _putchar(va_arg(args, int));
 			else if (format[i] == 's')
-			{
-				str = va_arg(args, char *);
-				if (str == NULL)
-					len += write(1, "(null)", 6);
-				else
-					len += _stringoutput(str);
-			}
+				len += _stringoutput(va_arg(args, char *));
 			else if (format[i] == '%')
 				len += _putchar('%');
 			else
