@@ -12,7 +12,7 @@ int _stringoutput(char *str)
 
 	if (str == NULL)
 	{
-		exit(-1);
+		len = write(1, "(null)", 6);
 	}
 	else
 	{
