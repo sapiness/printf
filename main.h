@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <ctype.h>
 
 int _putchar(char c);
 void _print_s(char *str);
@@ -11,5 +12,6 @@ int _printf(const char *format, ...);
 int putchr(char c);
 int _stringoutput(char *str);
 int _strlen(char *s);
+int _printf_numbers(int number);
 
 #endif

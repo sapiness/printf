@@ -1,5 +1,54 @@
 #include "main.h"
 /**
+ * _printf_numbers - prints an integer value
+ * @number: jjj
+ * Return: hhhh
+ */
+int _printf_numbers(int number)
+{
+	int copy, digit, divider = 1, digitCount = 0;
+
+	if (!isdigit(number))
+	{
+		_putchar('I');
+		_putchar('n');
+		_putchar('v');
+		_putchar('a');
+		_putchar('l');
+		_putchar('i');
+		_putchar('d');
+		_putchar(' ');
+		_putchar('I');
+		_putchar('u');
+		_putchar('t');
+		_putchar('\n');
+		return (0);
+	}
+	if (number < 0)
+	{
+		_putchar('-');
+		number = -number;
+	}
+	copy = number;
+
+	while (copy >= 10)
+	{
+		divider *= 10;
+		copy /= 10;
+	}
+	while (divider > 0)
+	{
+		digit = number / divider;
+		_putchar(digit + '0');
+		number %= divider;
+		divider /= 10;
+		digitCount++;
+	}
+	return (digitCount);
+}
+
+#include "main.h"
+/**
  * _printf - prints formatted string
  * @format: format string
  * Return: number of characters printed (excluding null byte)
