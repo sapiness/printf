@@ -8,6 +8,16 @@
 
 int _stringoutput(char *str)
 {
-	write(1, str, _strlen(str));
-	return (_strlen(str));
+	int len = 0;
+
+	if (str == NULL)
+	{
+		exit(-1);
+	}
+	else
+	{
+		len = _strlen(str);
+		write(1, str, len);
+	}
+	return (len);
 }
