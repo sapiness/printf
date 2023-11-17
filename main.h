@@ -11,6 +11,6 @@ int _printf(const char *format, ...);
 int putchr(char c);
 int _stringoutput(char *str);
 int _strlen(char *s);
-int _printf_numbers(int number);
+int _printf_numbers(long int number);
 
 #endif

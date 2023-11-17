@@ -4,9 +4,10 @@
  * @number: number to be printed
  * Return: number printed
  */
-int _printf_numbers(int number)
+int _printf_numbers(long int number)
 {
-	int copy, digit, divider = 1, digitCount = 0;
+	long int copy, digit, divider = 1;
+	int digitCount = 0;
 
 	if (number < 0)
 	{
