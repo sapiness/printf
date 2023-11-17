@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * _printf_numbers - prints an integer value
- * @number: jjj
- * Return: hhhh
+ * @number: number to be printed
+ * Return: number printed
  */
 int _printf_numbers(int number)
 {
@@ -12,6 +12,7 @@ int _printf_numbers(int number)
 	{
 		_putchar('-');
 		number = -number;
+		digitCount++;
 	}
 	copy = number;
 
