@@ -25,6 +25,8 @@ int _printf(const char *format, ...)
 				len += _stringoutput(va_arg(args, char *));
 			else if (format[i] == 'd' || format[i] == 'i')
 				len += _printf_numbers(va_arg(args, int));
+			else if (format[i] == 'b')
+				len += _printf_binary(args);
 			else if (format[i] == '%')
 				len += _putchar('%');
 			else
