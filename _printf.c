@@ -7,13 +7,15 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
+
 	int i, len = 0;
 
+	if (!format || (format[0] == '%' && !format[1]) ||
+			(format[0] == '%' && format[1] == ' ' && !format[2]))
+		return (-1);
+
 	va_start(args, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -27,19 +29,19 @@ int _printf(const char *format, ...)
 				len += _printf_numbers(va_arg(args, int));
 			else if (format[i] == 'b')
 				len += _printf_binary(args);
+			else if (format[i] == 'u')
+				len += _printf_unsigned_int(va_arg(args, unsigned int));
+			else if (format[i] == 'o')
+				len += _printf_octal(va_arg(args, unsigned int));
+			else if (format[i] == 'x' || format[i] == 'X')
+				len += _printf_hexadecimal(va_arg(args, unsigned int), format[i] == 'X');
 			else if (format[i] == '%')
 				len += _putchar('%');
 			else
-			{
-				len += _putchar('%');
-				len += _putchar(format[i]);
-			}
+				len += _putchar('%') + _putchar(format[i]);
 		}
 		else
-		{
-			_putchar(format[i]);
-			len++;
-		}
+			len += _putchar(format[i]);
 	}
 	va_end(args);
 	return (len);

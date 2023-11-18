@@ -15,5 +15,8 @@ int _stringoutput(char *str);
 int _strlen(char *s);
 int _printf_numbers(long int number);
 int _printf_binary(va_list args);
+int _printf_unsigned_int(unsigned int num);
+int _printf_octal(unsigned int num);
+int _printf_hexadecimal(unsigned int num, int uppercase);
 
 #endif

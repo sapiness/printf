@@ -14,6 +14,12 @@ int _printf_binary(va_list args)
 
 	num = va_arg(args, unsigned int);
 
+	if (num == 0)
+	{
+		_putchar('b');
+		count++;
+	}
+
 	if (num < 0)
 	{
 		_putchar('-');
