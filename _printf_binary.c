@@ -8,16 +8,19 @@
 
 int _printf_binary(va_list args)
 {
-	unsigned int num = va_arg(args, unsigned int);
-	int binary[32]; /*assuming 32-bit integers*/
-	int i, count = 0;
+	int binary[32];
+
+	int num, i, count = 0;
+
+	num = va_arg(args, unsigned int);
 
 	if (num < 0)
 	{
-		putchar('-');
-		abs_num = -num; /*use absolute value for negative numbers*/
+		_putchar('-');
+		num = -num; /*use absolute value for negative numbers*/
 		count++;
 	}
+
 	/*Convert decimal to binary*/
 	for (i = 0; num > 0; i++)
 	{

@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define MAX_BINARY_DIGITS 32
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
